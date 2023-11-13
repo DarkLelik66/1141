@@ -1,0 +1,1048 @@
+
+
+----------------------------------------
+checking for C compiler
+
+
+----------------------------------------
+checking for gcc -pipe switch
+
+
+----------------------------------------
+checking for --with-ld-opt="-DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now"
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for -Wl,-E switch
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for gcc builtin atomic operations
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for C99 variadic macros
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for gcc variadic macros
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for gcc builtin 64 bit byteswap
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for gcc attribute packed
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for unistd.h
+
+
+----------------------------------------
+checking for inttypes.h
+
+
+----------------------------------------
+checking for limits.h
+
+
+----------------------------------------
+checking for sys/filio.h
+
+objs/autotest.c:3:10: fatal error: sys/filio.h: No such file or directory
+ #include <sys/filio.h>
+          ^~~~~~~~~~~~~
+compilation terminated.
+----------
+
+
+#include <sys/filio.h>
+
+int main(void) {
+    return 0;
+}
+
+----------
+cc -o objs/autotest objs/autotest.c
+----------
+
+----------------------------------------
+checking for sys/param.h
+
+
+----------------------------------------
+checking for sys/mount.h
+
+
+----------------------------------------
+checking for sys/statvfs.h
+
+
+----------------------------------------
+checking for crypt.h
+
+
+----------------------------------------
+checking for epoll
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for EPOLLRDHUP
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for EPOLLEXCLUSIVE
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for eventfd()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for O_PATH
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for sendfile()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for sendfile64()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for sys/prctl.h
+
+
+----------------------------------------
+checking for prctl(PR_SET_DUMPABLE)
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for prctl(PR_SET_KEEPCAPS)
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for capabilities
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for crypt_r()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for sys/vfs.h
+
+
+----------------------------------------
+checking for BPF sockhash
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for SO_COOKIE
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for UDP_SEGMENT
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:10:42: error: 'UDP_SEGMENT' undeclared (first use in this function)
+                   getsockopt(0, SOL_UDP, UDP_SEGMENT, &val, &optlen);
+                                          ^~~~~~~~~~~
+objs/autotest.c:10:42: note: each undeclared identifier is reported only once for each function it appears in
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+                  #include <netinet/udp.h>
+
+int main(void) {
+    socklen_t optlen = sizeof(int);
+                  int val;
+                  getsockopt(0, SOL_UDP, UDP_SEGMENT, &val, &optlen);
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for poll()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for /dev/poll
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c:4:10: fatal error: sys/devpoll.h: No such file or directory
+ #include <sys/devpoll.h>
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/devpoll.h>
+
+int main(void) {
+    int  n, dp; struct dvpoll  dvp;
+                  dp = 0;
+                  dvp.dp_fds = NULL;
+                  dvp.dp_nfds = 0;
+                  dvp.dp_timeout = 0;
+                  n = ioctl(dp, DP_POLL, &dvp);
+                  if (n == -1) return 1;
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for kqueue
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c:4:10: fatal error: sys/event.h: No such file or directory
+ #include <sys/event.h>
+          ^~~~~~~~~~~~~
+compilation terminated.
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/event.h>
+
+int main(void) {
+    (void) kqueue();
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for crypt()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+/tmp/cco73ocv.ltrans0.ltrans.o: In function `main':
+<artificial>:(.text+0xf): undefined reference to `crypt'
+collect2: error: ld returned 1 exit status
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+
+
+int main(void) {
+    crypt("test", "salt");;
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for crypt() in libcrypt
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for F_READAHEAD
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:7:14: error: 'F_READAHEAD' undeclared (first use in this function); did you mean 'F_SEAL_SEAL'?
+     fcntl(0, F_READAHEAD, 1);;
+              ^~~~~~~~~~~
+              F_SEAL_SEAL
+objs/autotest.c:7:14: note: each undeclared identifier is reported only once for each function it appears in
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+int main(void) {
+    fcntl(0, F_READAHEAD, 1);;
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for posix_fadvise()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for O_DIRECT
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for F_NOCACHE
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:7:14: error: 'F_NOCACHE' undeclared (first use in this function)
+     fcntl(0, F_NOCACHE, 1);;
+              ^~~~~~~~~
+objs/autotest.c:7:14: note: each undeclared identifier is reported only once for each function it appears in
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+int main(void) {
+    fcntl(0, F_NOCACHE, 1);;
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for directio()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:8:5: warning: implicit declaration of function 'directio' [-Wimplicit-function-declaration]
+     directio(0, DIRECTIO_ON);;
+     ^~~~~~~~
+objs/autotest.c:8:17: error: 'DIRECTIO_ON' undeclared (first use in this function)
+     directio(0, DIRECTIO_ON);;
+                 ^~~~~~~~~~~
+objs/autotest.c:8:17: note: each undeclared identifier is reported only once for each function it appears in
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/types.h>
+                  #include <sys/fcntl.h>
+
+int main(void) {
+    directio(0, DIRECTIO_ON);;
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for statfs()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for statvfs()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for dlopen()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+/tmp/ccbODYbJ.ltrans0.ltrans.o: In function `main':
+<artificial>:(.text+0xf): undefined reference to `dlopen'
+<artificial>:(.text+0x1e): undefined reference to `dlsym'
+collect2: error: ld returned 1 exit status
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <dlfcn.h>
+
+int main(void) {
+    dlopen(NULL, RTLD_NOW | RTLD_GLOBAL); dlsym(NULL, "");
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for dlopen() in libdl
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for sched_yield()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for sched_setaffinity()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for SO_SETFIB
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:7:31: error: 'SO_SETFIB' undeclared (first use in this function)
+     setsockopt(0, SOL_SOCKET, SO_SETFIB, NULL, 0);
+                               ^~~~~~~~~
+objs/autotest.c:7:31: note: each undeclared identifier is reported only once for each function it appears in
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+
+int main(void) {
+    setsockopt(0, SOL_SOCKET, SO_SETFIB, NULL, 0);
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for SO_REUSEPORT
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for SO_ACCEPTFILTER
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:7:31: error: 'SO_ACCEPTFILTER' undeclared (first use in this function); did you mean 'SO_LOCK_FILTER'?
+     setsockopt(0, SOL_SOCKET, SO_ACCEPTFILTER, NULL, 0);
+                               ^~~~~~~~~~~~~~~
+                               SO_LOCK_FILTER
+objs/autotest.c:7:31: note: each undeclared identifier is reported only once for each function it appears in
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+
+int main(void) {
+    setsockopt(0, SOL_SOCKET, SO_ACCEPTFILTER, NULL, 0);
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for SO_BINDANY
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:7:31: error: 'SO_BINDANY' undeclared (first use in this function); did you mean 'SO_LINGER'?
+     setsockopt(0, SOL_SOCKET, SO_BINDANY, NULL, 0);
+                               ^~~~~~~~~~
+                               SO_LINGER
+objs/autotest.c:7:31: note: each undeclared identifier is reported only once for each function it appears in
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+
+int main(void) {
+    setsockopt(0, SOL_SOCKET, SO_BINDANY, NULL, 0);
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for IP_TRANSPARENT
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for IP_BINDANY
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:8:31: error: 'IP_BINDANY' undeclared (first use in this function); did you mean 'IP_MINTTL'?
+     setsockopt(0, IPPROTO_IP, IP_BINDANY, NULL, 0);
+                               ^~~~~~~~~~
+                               IP_MINTTL
+objs/autotest.c:8:31: note: each undeclared identifier is reported only once for each function it appears in
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+                  #include <netinet/in.h>
+
+int main(void) {
+    setsockopt(0, IPPROTO_IP, IP_BINDANY, NULL, 0);
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for IP_BIND_ADDRESS_NO_PORT
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for IP_RECVDSTADDR
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:8:31: error: 'IP_RECVDSTADDR' undeclared (first use in this function); did you mean 'IP_ORIGDSTADDR'?
+     setsockopt(0, IPPROTO_IP, IP_RECVDSTADDR, NULL, 0);
+                               ^~~~~~~~~~~~~~
+                               IP_ORIGDSTADDR
+objs/autotest.c:8:31: note: each undeclared identifier is reported only once for each function it appears in
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+                  #include <netinet/in.h>
+
+int main(void) {
+    setsockopt(0, IPPROTO_IP, IP_RECVDSTADDR, NULL, 0);
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for IP_SENDSRCADDR
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:8:31: error: 'IP_SENDSRCADDR' undeclared (first use in this function); did you mean 'IP_ORIGDSTADDR'?
+     setsockopt(0, IPPROTO_IP, IP_SENDSRCADDR, NULL, 0);
+                               ^~~~~~~~~~~~~~
+                               IP_ORIGDSTADDR
+objs/autotest.c:8:31: note: each undeclared identifier is reported only once for each function it appears in
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+                  #include <netinet/in.h>
+
+int main(void) {
+    setsockopt(0, IPPROTO_IP, IP_SENDSRCADDR, NULL, 0);
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for IP_PKTINFO
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for IPV6_RECVPKTINFO
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for IP_MTU_DISCOVER
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for IPV6_MTU_DISCOVER
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for IP_DONTFRAG
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:8:31: error: 'IP_DONTFRAG' undeclared (first use in this function); did you mean 'IPV6_DONTFRAG'?
+     setsockopt(0, IPPROTO_IP, IP_DONTFRAG, NULL, 0);
+                               ^~~~~~~~~~~
+                               IPV6_DONTFRAG
+objs/autotest.c:8:31: note: each undeclared identifier is reported only once for each function it appears in
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+                  #include <netinet/in.h>
+
+int main(void) {
+    setsockopt(0, IPPROTO_IP, IP_DONTFRAG, NULL, 0);
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for IPV6_DONTFRAG
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for TCP_DEFER_ACCEPT
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for TCP_KEEPIDLE
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for TCP_FASTOPEN
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for TCP_INFO
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for accept4()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for kqueue AIO support
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:8:56: error: 'SIGEV_KEVENT' undeclared (first use in this function); did you mean 'SIGEV_THREAD'?
+                       iocb.aio_sigevent.sigev_notify = SIGEV_KEVENT;
+                                                        ^~~~~~~~~~~~
+                                                        SIGEV_THREAD
+objs/autotest.c:8:56: note: each undeclared identifier is reported only once for each function it appears in
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <aio.h>
+
+int main(void) {
+    struct aiocb  iocb;
+                      iocb.aio_sigevent.sigev_notify = SIGEV_KEVENT;
+                      (void) aio_read(&iocb);
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for Linux AIO support
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for int size
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for long size
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for long long size
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for void * size
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for uint32_t
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for uint64_t
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for sig_atomic_t
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for sig_atomic_t size
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for socklen_t
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for in_addr_t
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for in_port_t
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for rlim_t
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for uintptr_t
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for system byte ordering
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for size_t size
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for off_t size
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for time_t size
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for AF_INET6
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for setproctitle()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:7:5: warning: implicit declaration of function 'setproctitle'; did you mean 'setstate'? [-Wimplicit-function-declaration]
+     setproctitle("test");;
+     ^~~~~~~~~~~~
+     setstate
+/tmp/ccQdJYtR.ltrans0.ltrans.o: In function `main':
+<artificial>:(.text+0xf): undefined reference to `setproctitle'
+collect2: error: ld returned 1 exit status
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int main(void) {
+    setproctitle("test");;
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for pread()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for pwrite()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for pwritev()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for strerrordesc_np()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:7:18: warning: implicit declaration of function 'strerrordesc_np'; did you mean 'strerror_l'? [-Wimplicit-function-declaration]
+     char *p; p = strerrordesc_np(0);
+                  ^~~~~~~~~~~~~~~
+                  strerror_l
+objs/autotest.c:7:16: warning: assignment to 'char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+     char *p; p = strerrordesc_np(0);
+                ^
+/tmp/cc3cH3fI.ltrans0.ltrans.o: In function `main':
+<artificial>:(.text+0x13): undefined reference to `strerrordesc_np'
+collect2: error: ld returned 1 exit status
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <string.h>
+
+int main(void) {
+    char *p; p = strerrordesc_np(0);
+                  if (p == NULL) return 1;
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for sys_nerr
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+/tmp/cceGkCip.ltrans0.ltrans.o: In function `main':
+<artificial>:(.text+0x6): warning: `sys_nerr' is deprecated; use `strerror' or `strerror_r' instead
+135
+----------------------------------------
+checking for localtime_r()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for clock_gettime(CLOCK_MONOTONIC)
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for posix_memalign()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for memalign()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for mmap(MAP_ANON|MAP_SHARED)
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for mmap("/dev/zero", MAP_SHARED)
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for System V shared memory
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for POSIX semaphores
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+/tmp/ccw34lpb.ltrans0.ltrans.o: In function `main':
+<artificial>:(.text+0x1a): undefined reference to `sem_init'
+<artificial>:(.text+0x32): undefined reference to `sem_destroy'
+collect2: error: ld returned 1 exit status
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <semaphore.h>
+
+int main(void) {
+    sem_t  sem;
+                  if (sem_init(&sem, 1, 0) == -1) return 1;
+                  sem_destroy(&sem);;
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for POSIX semaphores in libpthread
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for struct msghdr.msg_control
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for ioctl(FIONBIO)
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for ioctl(FIONREAD)
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for struct tm.tm_gmtoff
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for struct dirent.d_namlen
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:8:29: error: 'struct dirent' has no member named 'd_namlen'; did you mean 'd_name'?
+     struct dirent  dir; dir.d_namlen = 0;
+                             ^~~~~~~~
+                             d_name
+objs/autotest.c:9:42: error: 'struct dirent' has no member named 'd_namlen'; did you mean 'd_name'?
+                   printf("%d", (int) dir.d_namlen);
+                                          ^~~~~~~~
+                                          d_name
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <dirent.h>
+                  #include <stdio.h>
+
+int main(void) {
+    struct dirent  dir; dir.d_namlen = 0;
+                  printf("%d", (int) dir.d_namlen);
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now
+----------
+
+----------------------------------------
+checking for struct dirent.d_type
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for sysconf(_SC_NPROCESSORS_ONLN)
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for sysconf(_SC_LEVEL1_DCACHE_LINESIZE)
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for openat(), fstatat()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for getaddrinfo()
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for ngx_http_upstream_check_module
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for PCRE2 library
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for OpenSSL library
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for OpenSSL QUIC support
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+objs/autotest.c: In function 'main':
+objs/autotest.c:7:5: warning: implicit declaration of function 'SSL_set_quic_method'; did you mean 'SSL_set_ssl_method'? [-Wimplicit-function-declaration]
+     SSL_set_quic_method(NULL, NULL);
+     ^~~~~~~~~~~~~~~~~~~
+     SSL_set_ssl_method
+/tmp/cccz2CPv.ltrans0.ltrans.o: In function `main':
+<artificial>:(.text+0x14): undefined reference to `SSL_set_quic_method'
+collect2: error: ld returned 1 exit status
+----------
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <openssl/ssl.h>
+
+int main(void) {
+    SSL_set_quic_method(NULL, NULL);
+    return 0;
+}
+
+----------
+cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c -DNGX_HTTP_UPSTREAM_CHECK,-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -flto=auto -Wl,-z,relro -Wl,-z,now -lssl -lcrypto -ldl -lpthread
+----------
+
+----------------------------------------
+checking for OpenSSL QUIC compatibility
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
+
+----------------------------------------
+checking for zlib library
+
+<command-line>: warning: ISO C99 requires whitespace after the macro name
